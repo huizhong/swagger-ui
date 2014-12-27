@@ -11,6 +11,14 @@ class OperationView extends Backbone.View
   }
 
   initialize: (opts={}) ->
+
+    Handlebars.registerHelper 'ifEqual',
+      (v1, v2, opts) ->
+        if v1 is v2
+          opts.fn(@)
+        else
+          opts.inverse(@)
+
     @auths = opts.auths
 
     @

@@ -28,7 +28,10 @@
       if (url && url.length > 1) {
         url = url[1];
       } else {
-        url = "http://petstore.swagger.wordnik.com/v2/swagger.json";
+        var hostName = location.protocol + '//' + location.host;
+        var loc = window.location.pathname;
+        var dir = loc.substring(0, loc.lastIndexOf('/'));
+        url = hostName + dir +  "/api-docs";
       }
       window.swaggerUi = new SwaggerUi({
         url: url,
